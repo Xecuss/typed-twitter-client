@@ -4,7 +4,8 @@
   "description": "封装常用twitter api调用",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run clear && tsc && node ./build/test.js",
+    "build": "npm run clear && tsc"
   },
   "repository": {
     "type": "git",
