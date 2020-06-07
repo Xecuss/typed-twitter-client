@@ -1,0 +1,30 @@
+{
+  "name": "typed-twitter-client",
+  "version": "0.0.1",
+  "description": "封装常用twitter api调用",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xecuss/typed-twitter-client.git"
+  },
+  "keywords": [
+    "twitter"
+  ],
+  "author": "Xecus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Xecuss/typed-twitter-client/issues"
+  },
+  "homepage": "https://github.com/Xecuss/typed-twitter-client#readme",
+  "devDependencies": {
+    "@types/node": "^14.0.11",
+    "@types/twitter": "^1.7.0",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "twitter": "^1.7.1"
+  }
+}
