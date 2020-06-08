@@ -56,12 +56,12 @@ export default class Twitter{
     }
 
     //获取关注者
-    public async getFollowersList(args: ITwitterApiFollowParams): Promise<ITweetFollowsList>{
+    public async getFollowersList(args?: ITwitterApiFollowParams): Promise<ITweetFollowsList>{
         return await this.callApiAsync<ITweetFollowsList>('followers/list.json', args);
     }
 
     //获取正在关注
-    public async getFollowingList(args: ITwitterApiFollowParams): Promise<ITweetFollowsList>{
+    public async getFollowingList(args?: ITwitterApiFollowParams): Promise<ITweetFollowsList>{
         return await this.callApiAsync<ITweetFollowsList>('friends/list.json', args);
     }
 }
