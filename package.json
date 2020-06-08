@@ -2,10 +2,13 @@
   "name": "typed-twitter-client",
   "version": "0.0.1",
   "description": "封装常用twitter api调用",
-  "main": "index.js",
+  "main": "./build/index.js",
   "scripts": {
-    "test": "npm run clear && tsc && node ./build/test.js",
-    "build": "npm run clear && tsc"
+    "prepare": "npm run rebuild",
+    "build": "tsc",
+    "rebuild": "npm run clean && npm run build",
+    "test": "tsc && node --inspect ./build/test.js",
+    "clean": "rm -rf build"
   },
   "repository": {
     "type": "git",
@@ -16,6 +19,7 @@
   ],
   "author": "Xecus",
   "license": "MIT",
+  "types": "build/index.d.ts",
   "bugs": {
     "url": "https://github.com/Xecuss/typed-twitter-client/issues"
   },
