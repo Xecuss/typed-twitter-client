@@ -1,14 +1,6 @@
 import TwitterClient from 'twitter';
 import { ITweet, ITweetFollowsList } from './interface/twitterapi.interface';
-
-export interface ITwitterApiFollowParams{
-    count?: number;
-    user_id?: number;
-    screen_name?: string;
-    cursor?: number;
-    skip_status?: boolean;
-    include_user_entities?: boolean;
-}
+import { ITwitterApiFollowParams, ITwitterApiTimeLineParams } from './interface/params.interface';
 
 export default class Twitter{
     private client: TwitterClient;
@@ -44,8 +36,8 @@ export default class Twitter{
         }
     }
 
-    public async getTimeline(): Promise<Array<ITweet>>{
-        return await this.callApiAsync<Array<ITweet>>('/statuses/home_timeline.json');
+    public async getTimeline(params?: ITwitterApiTimeLineParams): Promise<Array<ITweet>>{
+        return await this.callApiAsync<Array<ITweet>>('/statuses/home_timeline.json', params);
     }
 
     public async follow(screen_name: string, follow: boolean): Promise<any>{
