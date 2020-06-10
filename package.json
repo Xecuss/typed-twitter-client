@@ -1,6 +1,6 @@
 {
   "name": "typed-twitter-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "封装常用twitter api调用",
   "main": "./build/index.js",
   "scripts": {
