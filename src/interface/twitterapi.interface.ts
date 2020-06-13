@@ -99,7 +99,7 @@ export interface ITweetEnities{
     symbols: Array<ITweetEntitySymbol>;
     user_mentions: Array<ITweetEntityUser>;
     urls: Array<ITweetEntityUrl>;
-    media: Array<ITweetEntityMedia>;
+    media?: Array<ITweetEntityMedia>;
 }
 
 export interface ITweetExtendedEntities{
@@ -201,7 +201,7 @@ export interface ITweet{
     retweet_count: number;
     favorite_count: number;
     entities: ITweetEnities;
-    extended_entities: ITweetExtendedEntities;
+    extended_entities?: ITweetExtendedEntities;
     //发布推特来自平台 是一个http标签 例如 <a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>
     source?: string;
     //应该是 如果表示的推文是回复，则此字段将包含原始推文发布者的screen_name
