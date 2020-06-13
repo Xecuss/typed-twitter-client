@@ -9,10 +9,11 @@ export default class Twitter{
         this.client = new TwitterClient(args);
     }
 
-    public async callApiAsync<T = TwitterClient.RequestParams>(api: string, args?: any): Promise<T>{
+    public async callApiAsync<T = TwitterClient.RequestParams>(api: string, args?: any, method?: 'get' | 'post'): Promise<T>{
+        let trueMethod = method || 'get';
         if(args){
             return new Promise((res, rej) => {
-                this.client.get(api, args, function(err, data, response){
+                this.client[trueMethod](api, args, function(err, data, response){
                     if(err){
                         rej(err);
                     }
@@ -24,7 +25,7 @@ export default class Twitter{
         }
         else{
             return new Promise((res, rej) => {
-                this.client.get(api, function(err, data, response){
+                this.client[trueMethod](api, function(err, data, response){
                     if(err){
                         rej(err);
                     }
@@ -44,7 +45,7 @@ export default class Twitter{
         return await this.callApiAsync('friendships/create.json', {
             screen_name,
             follow
-        });
+        }, 'post');
     }
 
     //获取关注者
