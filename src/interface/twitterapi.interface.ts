@@ -35,7 +35,7 @@ export interface ITweetEntityHashTag{
  * @prop {string} type 上载的媒体的类型。可能的类型包括photo、video和animated_gif。
  * @prop {string} url 媒体链接的包装 URL。这与直接嵌入到原始推文文本中的 URL 以及参数的值相对应。
  */
-export interface ITweetEntityMedia{
+interface ITweetEntityMediaBase{
     display_url: string;
     expanded_url: string;
     id: number;
@@ -50,7 +50,35 @@ export interface ITweetEntityMedia{
     source_status_id_str?: string;
     source_user_id?: number;
     source_user_id_str?: string;
-    type: 'photo' | 'video' | 'animated_gif';
+    type: string;
+    url: string;
+}
+
+export interface ITweetEntityMediaVideo extends ITweetEntityMediaBase{
+    type: 'video';
+    video_info: ITweetEntityMediaVideoInfo;
+}
+
+export interface ITweetEntityMediaGif extends ITweetEntityMediaBase{
+    type: 'animated_gif';
+    video_info: ITweetEntityMediaVideoInfo;
+}
+
+export interface ITweetEntityMediaPhoto extends ITweetEntityMediaBase{
+    type: 'photo'
+}
+
+export type ITweetEntityMedia = ITweetEntityMediaVideo | ITweetEntityMediaGif | ITweetEntityMediaPhoto;
+
+interface ITweetEntityMediaVideoInfo{
+    aspect_ratio: Array<number>;
+    duration_millis: number;
+    variants: Array<ITweetEntityMediaVariant>
+}
+
+interface ITweetEntityMediaVariant{
+    bitrate: number;
+    content_type: 'video/mp4' | 'application/x-mpegURL';
     url: string;
 }
 
